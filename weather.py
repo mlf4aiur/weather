@@ -24,7 +24,7 @@ def is_metric():
 
 
 def get_request(url, values=None):
-    headers = {"User-Agent": "Python urllib2",
+    headers = {"User-Agent": "Python urllib",
                "Content-Type": "application/json"}
     if values:
         data = urlencode(values)
