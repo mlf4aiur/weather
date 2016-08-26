@@ -1,0 +1,41 @@
+{
+    "base": "stations",
+    "clouds": {
+        "all": 0
+    },
+    "cod": 200,
+    "coord": {
+        "lat": 39.91,
+        "lon": 116.4
+    },
+    "dt": 1461454286,
+    "id": 1816670,
+    "main": {
+        "humidity": 43,
+        "pressure": 1013,
+        "temp": 13.39,
+        "temp_max": 15.56,
+        "temp_min": 11
+    },
+    "name": "Beijing",
+    "sys": {
+        "country": "CN",
+        "id": 7405,
+        "message": 0.0115,
+        "sunrise": 1461360232,
+        "sunset": 1461409310,
+        "type": 1
+    },
+    "visibility": 10000,
+    "weather": [
+        {
+            "description": "clear sky",
+            "icon": "01n",
+            "id": 800,
+            "main": "Clear"
+        }
+    ],
+    "wind": {
+        "speed": 1
+    }
+}
