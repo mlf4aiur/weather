@@ -25,7 +25,8 @@ class WeatherTestCase(unittest.TestCase):
         self.assertFalse(weather.is_metric())
 
     def test_convert_to_dict(self):
-        response = open("fixtures/weather.json").read()
+        with open("fixtures/weather.json") as fp:
+            response = fp.read()
         expected = dict(
             city="Beijing",
             country="CN",
