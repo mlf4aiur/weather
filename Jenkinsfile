@@ -3,7 +3,7 @@ node {
     stage 'Checkout'
 
     // Get source code from GitHub
-    git credentialsId: cred_git, url: 'https://github.com/mlf4aiur/weather.git'
+    git credentialsId: url: 'https://github.com/mlf4aiur/weather.git'
 
     // Mark the code test 'stage'....
     stage 'Test'
@@ -26,10 +26,8 @@ node {
         image.push("${docker_tag}")
     }
 
-    stage 'Staging'
-    input message: 'Deploy it to Staging?', submitter: 'admin'
-
-    // Deploy this service to Staging environment
+    stage 'Development'
+    // Deploy this service to Development environment
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
                       credentialsId: cred_aws,
                       usernameVariable: 'AWS_ACCESS_KEY_ID',
@@ -76,6 +74,7 @@ try {
 
 stage name: 'Production', concurrency: 1
 node {
+    input message: 'Deploy it to Production environment?', submitter: 'admin'
     echo 'Production server looks to be alive'
     deploy 'production'
     echo "Deployed to production"
@@ -87,7 +86,13 @@ def version(versionFile) {
 }
 
 def runTests(testFile) {
-    sh "docker run --rm -v ${env.JENKINS_HOME}/workspace/${env.JOB_NAME}/:/myapp -w /myapp python:3.5.2-alpine pip install -r requirements.txt && python test_weather.py"
+    sh '''
+        docker run \\
+            --rm \\
+            -v ${env.JENKINS_HOME}/workspace/${env.JOB_NAME}/:/myapp \\
+            -w /myapp \
+            python:3.5.2-alpine pip install -r requirements.txt && python test_weather.py"
+    '''
 }
 
 def deploy(id) {
