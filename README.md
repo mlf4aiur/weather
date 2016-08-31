@@ -1,5 +1,6 @@
 Weather
 =======
+[![](https://images.microbadger.com/badges/image/mlf4aiur/weather.svg)](https://microbadger.com/images/mlf4aiur/weather "Get your own image badge on microbadger.com")
 
 Default environemnt variables:
 
